@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="img-container">
+    <img class="img"
+      src="https://img.freepik.com/foto-gratis/chico-sonriente-pasando-paginas-libro-texto_23-2147860751.jpg?w=360&t=st=1709624241~exp=1709624841~hmac=811836733bd430738e0c140b32f25ee5ed2c05e5cb2ad02c7e5ece59e9388bb6"
+      alt="">
+  </div>
+  <div class="form-container">
+    <h1>Iniciar Sesion</h1>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+
+      <div class="form-group">
+        <label class="form-label">Email:</label>
+        <input class="form-input" type="email" placeholder="ejemplo@ejemplo.com" [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email') }" formControlName="email"/>
+        <div class="text-danger" *ngIf="hasErrors('email', 'required')">Campo obligatorio.</div>
+        <div class="text-danger" *ngIf="hasErrors('email', 'email')">Mail Invalido</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Contraseña:</label>
+        <input class="form-input" type="password" id="pas" name="email" placeholder="Contraseña" [ngClass]="{'is-invalid': hasErrors('password', 'required') || hasErrors('password', 'email') }" formControlName="password"/>
+        <div class="text-danger" *ngIf="hasErrors('password', 'required')">Campo obligatorio.</div>
+      </div>
+      <div class="checkbox">
+        <input class="checkbox-input" type="checkbox" formControlName="remember">
+        <label>Recordarme</label>
+      </div>
+
+
+      <div class="btn-container">
+        <button class="btn" type="submit" [disabled]="loginForm.invalid">Iniciar Sesion</button>
+        <div class="link-container">
+          <a class="link" (click)="register()">¿No tienes una cuenta?</a>
+          <a class="link" (click)="recupero()">¿Olvidaste tu contraseña?</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
